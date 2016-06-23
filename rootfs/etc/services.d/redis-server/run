@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv sh
+
+if [ -f ./setup ];then
+  ./setup
+fi
+
+if [ "$?" = "0" ];then
+  exec 2>&1
+  exec redis-server /etc/redis.conf --daemonize no --requirepass "${WODBY_REDIS_PASSWORD}"
+else
+  exit 1
+fi

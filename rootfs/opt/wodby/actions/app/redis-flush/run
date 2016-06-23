@@ -1,0 +1,21 @@
+#!/bin/sh
+
+. "/etc/wodby/config"
+. "/etc/wodby/functions"
+. "/opt/wodby/actions/conf.d/redis-flush.sh"
+
+log
+action_key="wodby/states/execute/$WODBY_NAMESPACE/redis-master/redis_clear"
+remove_key "${action_key}"
+
+[ -z ${clear} ] && clear=0
+
+if [ "${clear}" = "1" ];then
+    result=$(redis-cli -a ${WODBY_REDIS_PASSWORD} flushall 2>&1)
+    errno=$?
+else
+    errno=1
+    result='Redis was not flushed due to clear!=1'
+fi
+
+answer

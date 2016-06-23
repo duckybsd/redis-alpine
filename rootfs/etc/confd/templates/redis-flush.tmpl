@@ -1,0 +1,3 @@
+{{ range $key, $value := json (getv "/redis_clear") }}
+{{ $key }}="{{ $value }}"
+{{ end }}

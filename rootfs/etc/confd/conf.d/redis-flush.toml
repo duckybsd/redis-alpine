@@ -1,0 +1,11 @@
+[template]
+prefix = "/wodby/states/execute/$WODBY_NAMESPACE/redis-master"
+src = "redis-flush.tmpl"
+dest = "/opt/wodby/actions/conf.d/redis-flush.sh"
+uid = 0
+gid = 0
+mode = "0600"
+keys = [
+  "/redis_clear",
+]
+reload_cmd = "/opt/wodby/actions/app/redis-flush/run"

@@ -1,4 +1,4 @@
-FROM wodby/redis-actions-alpine:v1.0.2
+FROM wodby/base-alpine:3.4
 MAINTAINER Wodby <hello@wodby.com>
 
 RUN apk add --update redis nmap-ncat && \
