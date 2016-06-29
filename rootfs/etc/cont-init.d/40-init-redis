@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv sh
+
+sed -i 's/<<password>>/'"${WODBY_REDIS_PASSWORD}"'/' /etc/redis/redis.conf
